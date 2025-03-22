@@ -8,8 +8,8 @@ router = APIRouter()
 
 @router.post("/predict")
 async def predict(file: UploadFile = File(...), model_type: str = "emotion"):
-    if file.content_type not in ["audio/wav", "audio/x-wav", "audio/vnd.wave"]:
-        raise HTTPException(status_code=400, detail="Invalid file type. Please upload a WAV file.")
+    if file.content_type not in ["audio/wav", "audio/x-wav", "audio/vnd.wave", "audio/x-m4a", "audio/mp4", "audio/aac"]:
+        raise HTTPException(status_code=400, detail="Invalid file type. Please upload a WAV or M4A file.")
 
     
     try:
